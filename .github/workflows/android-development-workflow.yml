@@ -1,0 +1,48 @@
+name: Dart-Test-Coverage
+on: [push, pull_request]
+
+jobs:
+  build-debug-apk:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Branch
+      uses: actions/checkout@v2
+    - name: Setup Java
+      uses: actions/setup-java@v1
+        with:
+          java-version: '8'
+    - name: Setup Flutter Environment
+      uses: subosito/flutter-action@v1
+        with:
+          flutter-version: '2.0.4'
+    - name: Setup Flutter Credential
+      run: flutter pub get
+    - name: Run Flutter test
+      run: flutter test
+    - name: Build Debug apk
+      run: flutter build apk --debug
+    - name: Build Debug appbundle
+      run: flutter build appbundle --debug
+
+  build-apk-release:
+    if: ${{ github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+      - name: Setup Java
+        uses: actions/setup-java@v1
+          with:
+            java-version: '8'
+      - name: Setup Flutter Environment
+        uses: subosito/flutter-action@v1
+          with:
+            flutter-version: '2.0.4'
+      - name: Setup Flutter Credential
+        run: flutter pub get
+      - name: Run Flutter test
+        run: flutter test
+      - name: Build Debug apk
+        run: flutter build apk
+      - name: Build Debug appbundle
+        run: flutter build appbundle
