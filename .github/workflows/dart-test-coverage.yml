@@ -18,10 +18,11 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test --coverage .
+      - run: genhtml ${{ github.workspace }}/coverage/lcov.info -o ${{ github.workspace }}/coverage/html
       - uses: actions/upload-artifact@v2
         with:
           name: coverage-report
-          path: ${{ github.workspace }}/coverage/lcov.info
+          path: ${{ github.workspace }}/coverage
       - uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
