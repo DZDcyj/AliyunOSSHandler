@@ -28,8 +28,8 @@ jobs:
         with:
           name: debug-artifacts
           path:
-            ${{ github.workspace }}/build/app/outputs/flutter-apk/*debug.apk
-            ${{ github.workspace }}/build/app/outputs/bundle/debug/*.aab
+            build/app/outputs/flutter/*debug.apk
+            build/app/outputs/bundle/debug/*.aab
 
   build-release-apk:
     if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'pull_request' }}
@@ -58,5 +58,5 @@ jobs:
         with:
           name: debug-artifacts
           path:
-            ${{ github.workspace }}/build/app/outputs/flutter-apk/*release.apk
-            ${{ github.workspace }}/build/app/outputs/bundle/release/*.aab
+            build/app/outputs/flutter-apk/*release.apk
+            build/app/outputs/bundle/release/*.aab
