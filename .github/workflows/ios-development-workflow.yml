@@ -20,7 +20,7 @@ jobs:
       - name: Run Flutter test
         run: flutter test
       - name: Build Debug ipa
-        run: flutter build ios --debug --nocodesign
+        run: flutter build ios --debug --no-codesign
 
   build-release-ipa:
     if: ${{ github.ref == 'refs/heads/master' }}
@@ -41,4 +41,4 @@ jobs:
       - name: Run Flutter test
         run: flutter test
       - name: Build Debug ipa
-        run: flutter build ios --debug --nocodesign
+        run: flutter build ios --debug --no-codesign
