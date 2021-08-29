@@ -18,7 +18,6 @@ jobs:
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test --coverage .
-      - run: genhtml ${{ github.workspace }}/coverage/lcov.info -o ${{ github.workspace }}/coverage/html
       - uses: actions/upload-artifact@v2
         with:
           name: coverage-report
@@ -26,3 +25,11 @@ jobs:
       - uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Send CI to PR
+        uses: zgosalvez/github-actions-report-lcov@v1.3.2
+        if: ${{ github.event_name == 'pull_request' }}
+        with:
+          coverage-files: coverage/lcov.*.info
+          minimum-coverage: 90
+          artifact-name: code-coverage-report
+          github-token: ${{ secrets.GITHUB_TOKEN }}
