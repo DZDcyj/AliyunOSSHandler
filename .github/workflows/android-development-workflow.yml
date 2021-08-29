@@ -21,15 +21,12 @@ jobs:
         run: flutter test
       - name: Build Debug apk
         run: flutter build apk --debug
-      - name: Build Debug appbundle
-        run: flutter build appbundle --debug
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: debug-artifacts
           path:
-            build/app/outputs/flutter/*debug.apk
-            build/app/outputs/bundle/debug/*.aab
+            build/app/outputs/apk/*debug.apk
 
   build-release-apk:
     if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'pull_request' }}
@@ -51,12 +48,9 @@ jobs:
         run: flutter test
       - name: Build Release apk
         run: flutter build apk
-      - name: Build Release appbundle
-        run: flutter build appbundle
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: release-artifacts
           path:
-            build/app/outputs/flutter-apk/*release.apk
-            build/app/outputs/bundle/release/*.aab
+            build/app/outputs/apk/*release.apk
