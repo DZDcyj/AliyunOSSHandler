@@ -21,9 +21,14 @@ jobs:
         run: flutter test
       - name: Build Debug ipa
         run: flutter build ios --debug --no-codesign
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: debug-artifacts
+          path: ${{ github.workspace }}/build/ios/**/*.app
 
   build-release-ipa:
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'pull_request' }}
     runs-on: macos-latest
     steps:
       - name: Checkout Branch
@@ -42,3 +47,8 @@ jobs:
         run: flutter test
       - name: Build Debug ipa
         run: flutter build ios --debug --no-codesign
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: debug-artifacts
+          path: ${{ github.workspace }}/build/ios/**/*.app

@@ -32,7 +32,7 @@ jobs:
             ${{ github.workspace }}/build/app/outputs/bundle/debug/*.aab
 
   build-release-apk:
-    if: ${{ github.ref == 'refs/heads/master' }}
+    if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Branch
