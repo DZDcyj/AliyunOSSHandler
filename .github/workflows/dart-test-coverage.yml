@@ -40,6 +40,6 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         with:
           coverage-files: coverage/lcov.info
-          minimum-coverage: 90
+          minimum-coverage: 75
           artifact-name: code-coverage-report
           github-token: ${{ secrets.GITHUB_TOKEN }}

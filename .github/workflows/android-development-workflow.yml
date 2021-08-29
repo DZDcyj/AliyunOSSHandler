@@ -49,14 +49,14 @@ jobs:
         run: flutter pub get
       - name: Run Flutter test
         run: flutter test
-      - name: Build Debug apk
+      - name: Build Release apk
         run: flutter build apk
-      - name: Build Debug appbundle
+      - name: Build Release appbundle
         run: flutter build appbundle
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: debug-artifacts
+          name: release-artifacts
           path:
             build/app/outputs/flutter-apk/*release.apk
             build/app/outputs/bundle/release/*.aab
