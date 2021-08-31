@@ -1,4 +1,4 @@
-name: iOS-Development-build
+name: iOS-Publishment-build
 on:
   push:
     branches: [main]
