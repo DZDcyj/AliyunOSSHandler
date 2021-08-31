@@ -1,8 +1,7 @@
 name: Android-Publishment-build
 on:
-  pull_request_review:
-    types:
-      - submitted
+  push:
+    branches: [main]
 
 jobs:
   build-release-apk:
