@@ -2,8 +2,6 @@ name: iOS-Development-build
 on:
   push:
     branches: [main]
-  pull_request:
-    branches-ignore: [main]
 
 jobs:
   build-release-ipa:
