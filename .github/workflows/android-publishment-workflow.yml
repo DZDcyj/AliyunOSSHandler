@@ -1,11 +1,11 @@
-name: iOS-Development-build
+name: Android-Publishment-build
 on:
   push:
-    branches-ignore: [main]
+    branches: [main]
 
 jobs:
-  build-debug-ipa:
-    runs-on: macos-latest
+  build-release-apk:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v2
@@ -21,10 +21,11 @@ jobs:
         run: flutter pub get
       - name: Run Flutter test
         run: flutter test
-      - name: Build Debug ipa
-        run: flutter build ios --debug --no-codesign
+      - name: Build Release apk
+        run: flutter build apk
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: debug-artifacts
-          path: ${{ github.workspace }}/build/ios/**/*.app
+          name: release-artifacts
+          path:
+            build/app/outputs/flutter-apk/app-release.apk

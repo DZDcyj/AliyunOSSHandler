@@ -1,5 +1,7 @@
 name: Android-Development-build
-on: [push, pull_request]
+on:
+  push:
+    branches-ignore: [main]
 
 jobs:
   build-debug-apk:
@@ -27,30 +29,3 @@ jobs:
           name: debug-artifacts
           path:
             build/app/outputs/flutter-apk/app-debug.apk
-
-  build-release-apk:
-    if: ${{ github.ref == 'refs/heads/master' || github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Branch
-        uses: actions/checkout@v2
-      - name: Setup Java
-        uses: actions/setup-java@v1
-        with:
-          java-version: '8'
-      - name: Setup Flutter Environment
-        uses: subosito/flutter-action@v1
-        with:
-          flutter-version: '2.0.4'
-      - name: Setup Flutter Credential
-        run: flutter pub get
-      - name: Run Flutter test
-        run: flutter test
-      - name: Build Release apk
-        run: flutter build apk
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: release-artifacts
-          path:
-            build/app/outputs/flutter-apk/app-release.apk
