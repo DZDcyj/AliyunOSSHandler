@@ -17,4 +17,11 @@ void main() {
     provider.increment();
     expect(provider.counter, 1);
   });
+
+  test('dispose', (){
+    HomePageProvider provider = HomePageProvider('title');
+    expect(provider.isDisposed, false);
+    provider.dispose();
+    expect(provider.isDisposed, true);
+  });
 }
