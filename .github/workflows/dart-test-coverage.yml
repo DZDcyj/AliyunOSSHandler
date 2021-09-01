@@ -11,12 +11,12 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: "8"
-      - name: Setup Flutter Environment
+      - name: Setup Flutter Action Environment
         uses: subosito/flutter-action@v1
         with:
           channel: "stable"
           flutter-version: '2.0.4'
-      - name: Setup Flutter Environment
+      - name: Setup Flutter Coverage Environment
         uses: stelynx/dart-full-coverage@v1.0.5
         with:
           package: aliyun_oss_handler
