@@ -27,7 +27,7 @@ jobs:
       - name: Flutter Code Coverage Test
         run: flutter test --coverage .
       - name: Post the coverage report
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v2.0.3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           path_to_write_report: ./coverage/codecov_report.txt
