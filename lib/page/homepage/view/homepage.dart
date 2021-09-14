@@ -18,7 +18,7 @@ class HomePage extends PageNodeProvider<HomePageProvider> {
   Widget buildContent(BuildContext context) => HomePageContent(mProvider);
 }
 
-class HomePageContent extends BasePageView<HomePageProvider> {
+class HomePageContent extends BasePageContentView<HomePageProvider> {
   HomePageContent(
     HomePageProvider provider, {
     Key key,
@@ -31,7 +31,7 @@ class HomePageContent extends BasePageView<HomePageProvider> {
   _MyHomePageContentState createState() => _MyHomePageContentState();
 }
 
-class _MyHomePageContentState extends BasePageViewState<HomePageProvider> {
+class _MyHomePageContentState extends BasePageContentViewState<HomePageProvider> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
