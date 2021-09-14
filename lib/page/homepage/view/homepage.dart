@@ -34,6 +34,7 @@ class HomePageContent extends BasePageContentView<HomePageProvider> {
 class _MyHomePageContentState extends BasePageContentViewState<HomePageProvider> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(mProvider.title),
