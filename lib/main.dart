@@ -4,8 +4,7 @@
 /// created by DZDcyj at 2021/8/29
 ///
 import 'package:aliyun_oss_handler/app_module.dart';
-import 'package:aliyun_oss_handler/page/homepage/view/homepage.dart';
-import 'package:aliyun_oss_handler/page/initpage/view/initpage.dart';
+import 'package:aliyun_oss_handler/page/init_page/view/init_page.dart';
 import 'package:aliyun_oss_handler/router/router.dart';
 import 'package:dartin/dartin.dart';
 import 'package:flutter/material.dart';

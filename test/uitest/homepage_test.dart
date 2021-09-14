@@ -4,6 +4,7 @@
 /// created by DZDcyj at 2021/8/29
 ///
 import 'package:aliyun_oss_handler/main.dart';
+import 'package:aliyun_oss_handler/page/homepage/view/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -14,9 +15,7 @@ void main() {
   init();
 
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp());
-    await tester.pump();
+    await showWidget(tester, HomePage('title'));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
