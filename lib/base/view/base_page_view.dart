@@ -26,7 +26,7 @@ abstract class PageNodeProvider<T extends ChangeNotifier> extends StatelessWidge
   }
 }
 
-class BasePageContentView<T extends ChangeNotifier> extends StatefulWidget {
+abstract class BasePageContentView<T extends ChangeNotifier> extends StatefulWidget {
   BasePageContentView(T provider, {Key key})
       : mProvider = provider,
         super(key: key);
@@ -34,10 +34,10 @@ class BasePageContentView<T extends ChangeNotifier> extends StatefulWidget {
   final T mProvider;
 
   @override
-  BasePageContentViewState createState() => BasePageContentViewState();
+  BasePageContentViewState<T> createState();
 }
 
-class BasePageContentViewState<T extends ChangeNotifier> extends State<BasePageContentView<T>> {
+abstract class BasePageContentViewState<T extends ChangeNotifier> extends State<BasePageContentView<T>> {
   T mProvider;
 
   void initState() {
@@ -46,6 +46,7 @@ class BasePageContentViewState<T extends ChangeNotifier> extends State<BasePageC
   }
 
   @override
+  @mustCallSuper
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>.value(
       value: mProvider,

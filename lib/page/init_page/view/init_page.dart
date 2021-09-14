@@ -41,6 +41,7 @@ class _InitPageContentState extends BasePageContentViewState<InitPageProvider> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
       body: Center(
         child: Text(
