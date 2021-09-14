@@ -5,6 +5,8 @@
 ///
 import 'package:aliyun_oss_handler/app_module.dart';
 import 'package:aliyun_oss_handler/page/homepage/view/homepage.dart';
+import 'package:aliyun_oss_handler/page/initpage/view/initpage.dart';
+import 'package:aliyun_oss_handler/router/router.dart';
 import 'package:dartin/dartin.dart';
 import 'package:flutter/material.dart';
 
@@ -18,10 +20,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      navigatorObservers: [CustomNavigatorObserver.getInstance()],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage('Flutter Demo Home Page'),
+      home: InitPage(),
     );
   }
 }

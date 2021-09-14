@@ -7,8 +7,7 @@ import 'package:dartin/dartin.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-abstract class PageNodeProvider<T extends ChangeNotifier>
-    extends StatelessWidget {
+abstract class PageNodeProvider<T extends ChangeNotifier> extends StatelessWidget {
   final T mProvider;
 
   PageNodeProvider({Key key, List<dynamic> params})
@@ -27,19 +26,18 @@ abstract class PageNodeProvider<T extends ChangeNotifier>
   }
 }
 
-class BasePageView<T extends ChangeNotifier> extends StatefulWidget {
-  BasePageView(T provider, {Key key})
+class BasePageContentView<T extends ChangeNotifier> extends StatefulWidget {
+  BasePageContentView(T provider, {Key key})
       : mProvider = provider,
         super(key: key);
 
   final T mProvider;
 
   @override
-  BasePageViewState createState() => BasePageViewState();
+  BasePageContentViewState createState() => BasePageContentViewState();
 }
 
-class BasePageViewState<T extends ChangeNotifier>
-    extends State<BasePageView<T>> {
+class BasePageContentViewState<T extends ChangeNotifier> extends State<BasePageContentView<T>> {
   T mProvider;
 
   void initState() {
