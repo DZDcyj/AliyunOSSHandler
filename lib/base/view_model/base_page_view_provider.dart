@@ -3,6 +3,8 @@
 ///
 /// created by DZDcyj at 2021/8/29
 ///
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:rxdart/rxdart.dart';
 
@@ -13,11 +15,25 @@ abstract class BasePageProvider extends ChangeNotifier {
 
   @override
   void dispose() {
+    if (!_compositeSubscription.isDisposed) {
+      _compositeSubscription.dispose();
+    }
+    isDisposed = true;
     super.dispose();
+  }
+
+  @override
+  void notifyListeners() {
     if (isDisposed) {
       return;
     }
-    isDisposed = true;
-    _compositeSubscription.dispose();
+    super.notifyListeners();
+  }
+
+  void asyncRequest(Stream<dynamic> request, {bool cancelOnError}) {
+    if (request == null || _compositeSubscription.isDisposed) {
+      return;
+    }
+    _compositeSubscription.add(request.listen(null, cancelOnError: cancelOnError));
   }
 }

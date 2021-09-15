@@ -18,3 +18,5 @@ comment:
   require_base: false
   require_head: true
   require_changes: false
+ignore:
+  - './lib/base/.*'
