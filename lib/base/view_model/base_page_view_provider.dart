@@ -3,7 +3,7 @@
 ///
 /// created by DZDcyj at 2021/8/29
 ///
-import 'dart:async'
+import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:rxdart/rxdart.dart';
