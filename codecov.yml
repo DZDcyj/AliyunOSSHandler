@@ -22,4 +22,4 @@ ignore:
   - './lib/base'
   - './lib/bean'
   - './lib/router'
-  - './main.dart'
+  - './lib/main.dart'
