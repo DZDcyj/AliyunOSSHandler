@@ -1,11 +1,20 @@
 codecov:
-  range: 85..100
-  round: nearest
-  precision: 2
-
+  require_ci_to_pass: true
 coverage:
+  precision: 2
+  range: 75..100
   status:
+    patch:
+      default:
+        threshold: 20%
+        if_not_found: success
     project:
       default:
-        target: 85%
         threshold: 10%
+        if_not_found: success
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
+  require_base: false
+  require_head: true
+  require_changes: false
