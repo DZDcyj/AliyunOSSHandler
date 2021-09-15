@@ -1,0 +1,4 @@
+codecov:
+  range: 85..100
+  round: nearest
+  precision: 2
