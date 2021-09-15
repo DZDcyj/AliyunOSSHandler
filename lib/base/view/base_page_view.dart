@@ -14,7 +14,6 @@ abstract class PageNodeProvider<T extends ChangeNotifier> extends StatelessWidge
       : mProvider = inject<T>(params: params),
         super(key: key);
 
-  @mustCallSuper
   Widget buildContent(BuildContext context);
 
   @override
@@ -46,7 +45,6 @@ abstract class BasePageContentViewState<T extends ChangeNotifier> extends State<
   }
 
   @override
-  @mustCallSuper
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<T>.value(
       value: mProvider,
