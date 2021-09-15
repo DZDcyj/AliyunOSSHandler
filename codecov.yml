@@ -1,0 +1,11 @@
+codecov:
+  range: 85..100
+  round: nearest
+  precision: 2
+
+coverage:
+  status:
+    project:
+      default:
+        target: 85%
+        threshold: 10%
