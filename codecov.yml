@@ -20,3 +20,5 @@ comment:
   require_changes: false
 ignore:
   - './lib/base/.*'
+  - './lib/router'
+  - './main.dart'
