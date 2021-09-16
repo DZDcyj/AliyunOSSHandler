@@ -3,6 +3,7 @@
 ///
 /// created by DZDcyj at 2021/9/16
 ///
+part of bean;
 
 typedef EntityGenerator<T> = T Function(dynamic json);
 
@@ -27,13 +28,14 @@ class EntityFactory {
   /// 实体构建
   static final generators = Map.fromIterable(
     [
-      // TODO: 添加实体类构造方法
-      // _Generator<MapEntity>(
-      //   (json) => MapEntity.fronJson(json),
-      // ),
+      _Generator<MapEntity>(
+        (json) => MapEntity.fromJson(json),
+      ),
+      _Generator<HttpResponseEntity>(
+        (json) => HttpResponseEntity.fromJson(json),
+      ),
     ],
     key: (g) => g.keyName,
     value: (g) => g.generator,
   );
-
 }

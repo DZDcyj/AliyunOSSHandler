@@ -5,6 +5,10 @@
 ///
 
 /// HTTP 返回码
-final int responseOK = 200;
-final int responseNotFound = 404;
-final int responseInternalError = 500;
+const int responseOK = 200;
+const int responseNotFound = 404;
+const int responseInternalError = 500;
+
+/// 网络请求相关
+const int maxTimeout = 10000;
+const String contentType = 'application/json; charset=utf8';

@@ -5,6 +5,7 @@
 ///
 import 'package:aliyun_oss_handler/page/homepage/view_model/homepage_provider.dart';
 import 'package:aliyun_oss_handler/page/init_page/view_model/init_page_provider.dart';
+import 'package:aliyun_oss_handler/utils/net_util.dart';
 import 'package:dartin/dartin.dart';
 
 final viewModelModule = Module([
@@ -18,4 +19,8 @@ final viewModelModule = Module([
   ),
 ]);
 
-final appModule = [viewModelModule];
+final utilModule = Module([
+  single<NetUtil>(({params}) => NetUtil()),
+]);
+
+final appModule = [viewModelModule, utilModule];

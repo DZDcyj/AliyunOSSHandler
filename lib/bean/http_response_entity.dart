@@ -3,37 +3,31 @@
 ///
 /// created by DZDcyj at 2021/9/16
 ///
+part of bean;
+
 abstract class ToJson {
   Map<String, dynamic> toJson();
 }
 
-/// Map 实体类
-class MapEntity implements ToJson {
-  Map<String, dynamic> content;
-
-  MapEntity.fromJson(Map<String, dynamic> json) {
-    content = json;
-  }
-
-  Map<String, dynamic> toJson() => content;
-}
-
 /// 网络返回信息实体类
-class HttpResponseEntity implements ToJson {
+class HttpResponseEntity<T extends ToJson> implements ToJson {
   int code; // 状态码
   String msg; // 信息
-  Map<String, dynamic> data; // 数据
+  Map<String, dynamic> rawData; // 原始数据
+  T data; // 转换后数据
 
   HttpResponseEntity({
     this.code,
     this.msg,
+    this.rawData,
     this.data,
   });
 
   HttpResponseEntity.fromJson(Map<String, dynamic> json) {
     code = json['code'] ?? -1;
     msg = json['msg'] ?? '';
-    data = json['data'] ?? {};
+    rawData = json['data'] ?? {};
+    data = EntityFactory.generate<T>(json);
   }
 
   @override
@@ -41,7 +35,8 @@ class HttpResponseEntity implements ToJson {
     Map<String, dynamic> result = {};
     result['code'] = code;
     result['msg'] = msg;
-    result['data'] = data;
+    result['raw_data'] = rawData;
+    result['data'] = data.toJson();
     return result;
   }
 }
