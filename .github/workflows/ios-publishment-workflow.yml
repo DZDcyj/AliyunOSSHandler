@@ -6,6 +6,7 @@ on:
 
 jobs:
   build-release-ipa:
+    if: github.event.review.state == 'approved'
     runs-on: macos-latest
     steps:
       - name: Checkout Branch
