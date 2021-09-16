@@ -1,12 +1,11 @@
 name: Android-Publishment-build
 on:
-  pull_request_review:
-    types:
-      - submitted
+  pull_request:
+    types: [closed]
 
 jobs:
   build-release-apk:
-    if: github.event.review.state == 'approved'
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Branch
