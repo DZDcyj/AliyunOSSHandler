@@ -7,6 +7,17 @@ abstract class ToJson {
   Map<String, dynamic> toJson();
 }
 
+/// Map 实体类
+class MapEntity implements ToJson {
+  Map<String, dynamic> content;
+
+  MapEntity.fromJson(Map<String, dynamic> json) {
+    content = json;
+  }
+
+  Map<String, dynamic> toJson() => content;
+}
+
 /// 网络返回信息实体类
 class HttpResponseEntity implements ToJson {
   int code; // 状态码
