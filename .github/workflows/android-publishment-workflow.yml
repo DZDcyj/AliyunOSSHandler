@@ -6,6 +6,7 @@ on:
 
 jobs:
   build-release-apk:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Branch
@@ -24,7 +25,10 @@ jobs:
         run: flutter test
       - name: Build Release apk
         run: flutter build apk
+        id: build
+        continue-on-error: true
       - name: Upload artifacts
+        if: ${{ steps.build.outcome == 'success' }}
         uses: actions/upload-artifact@v2
         with:
           name: release-artifacts

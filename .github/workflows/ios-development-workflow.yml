@@ -23,7 +23,10 @@ jobs:
         run: flutter test
       - name: Build Debug ipa
         run: flutter build ios --debug --no-codesign
+        id: build
+        continue-on-error: true
       - name: Upload artifacts
+        if: ${{ steps.build.outcome == 'success' }}
         uses: actions/upload-artifact@v2
         with:
           name: debug-artifacts
