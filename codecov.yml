@@ -22,5 +22,6 @@ ignore:
   - './lib/base'
   - './lib/bean'
   - './lib/router'
+  - './lib/util'
   - './lib/main.dart'
   - './lib/app_module.dart'
