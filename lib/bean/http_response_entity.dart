@@ -27,7 +27,7 @@ class HttpResponseEntity<T extends ToJson> implements ToJson {
     code = json['code'] ?? -1;
     msg = json['msg'] ?? '';
     rawData = json['data'] ?? {};
-    data = EntityFactory.generate<T>(json);
+    data = EntityFactory.generate<T>(json['data']);
   }
 
   @override

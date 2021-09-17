@@ -11,7 +11,6 @@ import 'package:aliyun_oss_handler/constants/constants.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-
 class NetUtil {
   NetUtil();
 
@@ -26,26 +25,26 @@ class NetUtil {
 
   Stream<HttpResponseEntity<T>> get<T extends ToJson>(
     String api, {
-    Map<String, dynamic> params,
+    Map<String, dynamic> queryParameters,
   }) {
-    // var future = _get(constructUrl(api), params: params);
-    // var stream = Stream.fromFuture(future).asBroadcastStream().transform<HttpResponseEntity<T>>(
-    //   StreamTransformer.fromHandlers(
-    //     handleData: (data, sink) {
-    //       sink.add(data);
-    //     },
-    //   ),
-    // );
-    // return stream;
-    return null;
+    return _get<T>(constructUrl(api), queryParameters: queryParameters).asStream().asBroadcastStream();
   }
 
   Future<HttpResponseEntity<T>> _get<T extends ToJson>(
     String url, {
-    Map<String, dynamic> params,
+    Map<String, dynamic> queryParameters,
   }) async {
-    var response = await dio.get(url, queryParameters: params);
-    return response.data;
+    var response = await dio.get(url, queryParameters: queryParameters);
+    return HttpResponseEntity<T>.fromJson(json.decode(response.data));
+  }
+
+  Map<String, dynamic> parseResponse(Response response) {
+    Map<String, dynamic> result = {};
+    Map<String, dynamic> data = json.decode(response.data);
+    result['code'] = data['code'] ?? -1;
+    result['msg'] = data['msg'] ?? '';
+    result['data'] = data['data'];
+    return result;
   }
 }
 
