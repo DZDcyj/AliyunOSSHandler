@@ -36,15 +36,6 @@ class NetUtil {
     var response = await dio.get(url, queryParameters: queryParameters);
     return HttpResponseEntity<T>.fromJson(json.decode(response.data));
   }
-
-  Map<String, dynamic> parseResponse(Response response) {
-    Map<String, dynamic> result = {};
-    Map<String, dynamic> data = json.decode(response.data);
-    result['code'] = data['code'] ?? -1;
-    result['msg'] = data['msg'] ?? '';
-    result['data'] = data['data'];
-    return result;
-  }
 }
 
 String constructUrl(String api) {
