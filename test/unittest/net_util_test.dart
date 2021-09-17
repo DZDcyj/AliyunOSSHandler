@@ -44,6 +44,6 @@ void main() {
   });
 
   test('constructUrl', () {
-    expect(constructUrl('api'), 'https://api');
+    expect(constructUrl('api'), 'https://api.chinsan.top/api');
   });
 }
