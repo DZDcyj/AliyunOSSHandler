@@ -3,7 +3,7 @@
 ///
 /// created by DZDcyj at 2021/9/16
 ///
-part of bean;
+import 'bean.dart';
 
 /// Map 实体类
 class MapEntity implements ToJson {

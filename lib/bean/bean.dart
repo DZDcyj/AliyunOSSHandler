@@ -5,8 +5,8 @@
 ///
 library bean;
 
-part 'entity_factory.dart';
+export 'entity_factory.dart';
 
-part 'http_response_entity.dart';
+export 'http_response_entity.dart';
 
-part 'map_entity.dart';
+export 'map_entity.dart';

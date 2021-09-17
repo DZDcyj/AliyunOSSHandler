@@ -3,7 +3,7 @@
 ///
 /// created by DZDcyj at 2021/9/16
 ///
-part of bean;
+import 'bean.dart';
 
 typedef EntityGenerator<T> = T Function(dynamic json);
 
