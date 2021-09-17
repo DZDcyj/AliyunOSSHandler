@@ -12,3 +12,4 @@ const int responseInternalError = 500;
 /// 网络请求相关
 const int maxTimeout = 10000;
 const String contentType = 'application/json; charset=utf8';
+const String serverDomain = 'api.chinsan.top';

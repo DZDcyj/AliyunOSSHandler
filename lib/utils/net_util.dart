@@ -39,5 +39,5 @@ class NetUtil {
 }
 
 String constructUrl(String api) {
-  return 'https://$api';
+  return 'https://$serverDomain/$api';
 }
