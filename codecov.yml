@@ -19,6 +19,9 @@ comment:
   require_head: true
   require_changes: false
 ignore:
-  - './lib/base/.*'
+  - './lib/base'
+  - './lib/bean'
   - './lib/router'
-  - './main.dart'
+  - './lib/util'
+  - './lib/main.dart'
+  - './lib/app_module.dart'
