@@ -9,7 +9,6 @@ import 'dart:convert';
 import 'package:aliyun_oss_handler/bean/bean.dart';
 import 'package:aliyun_oss_handler/constants/constants.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 
 class NetUtil {
   NetUtil();
@@ -21,7 +20,7 @@ class NetUtil {
     responseType: ResponseType.json,
   );
 
-  Dio dio = Dio(baseOptions)..transformer = FlutterTransformer();
+  Dio dio = Dio(baseOptions);
 
   Stream<HttpResponseEntity<T>> get<T extends ToJson>(
     String api, {
@@ -50,16 +49,4 @@ class NetUtil {
 
 String constructUrl(String api) {
   return 'https://$api';
-}
-
-class FlutterTransformer extends DefaultTransformer {
-  FlutterTransformer() : super(jsonDecodeCallback: _parseJson);
-}
-
-dynamic _parseAndDecode(String response) {
-  return jsonDecode(response);
-}
-
-_parseJson(String text) {
-  return compute(_parseAndDecode, text);
 }
