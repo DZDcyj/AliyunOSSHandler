@@ -1,7 +1,7 @@
 name: iOS-Development-build
 on:
   push:
-    branches-ignore: [main]
+    branches-ignore: [master]
 
 jobs:
   build-debug-ipa:
